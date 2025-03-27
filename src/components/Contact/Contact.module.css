@@ -1,0 +1,19 @@
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid;
+  gap: 19px;
+  padding: 5px;
+  font-size: 10px;
+}
+.contactEl {
+  display: flex;
+  flex-direction: column;
+}
+.contactBtn {
+  width: 80px;
+  height: 40px;
+}
+.el {
+}
