@@ -1,14 +1,27 @@
+import { useSelector } from "react-redux";
 import Contact from "../Contact/Contact";
 import css from "./ContactLIst.module.css";
 
-export default function ContactList({ allUsers, deleteUser }) {
+export default function ContactList() {
+  const users = useSelector((state) => state.contacts.items);
+  const filter = useSelector((state) => state.filters.name);
   return (
     <ul className={css.contacts}>
-      {allUsers.map((user) => (
-        <li className={css.el} key={user.id}>
-          <Contact contactsList={user} deleteUser={deleteUser} />
-        </li>
-      ))}
+      {filter === ""
+        ? users.map((user) => (
+            <li className={css.el} key={user.id}>
+              <Contact contactsList={user} />
+            </li>
+          ))
+        : users
+            .filter((user) =>
+              user.name.toLowerCase().includes(filter.toLowerCase())
+            )
+            .map((user) => (
+              <li className={css.el} key={user.id}>
+                <Contact contactsList={user} />
+              </li>
+            ))}
     </ul>
   );
 }

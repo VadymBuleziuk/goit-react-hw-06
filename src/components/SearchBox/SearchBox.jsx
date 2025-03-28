@@ -1,8 +1,11 @@
 import css from "./SearchBox.module.css";
+import { changeFilter } from "../../redux/filtersSlice";
+import { useDispatch } from "react-redux";
 
-export default function SearchBox({ filterContacts }) {
+export default function SearchBox() {
+  const dispatch = useDispatch();
   const filter = (event) => {
-    filterContacts(event.target.value);
+    dispatch(changeFilter(event.target.value));
   };
   return (
     <div className={css.filter}>
